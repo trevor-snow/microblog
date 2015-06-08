@@ -21,6 +21,9 @@ class User(db.Model):
 		except NameError:
 			return str(self.id) # python 3
 
+	def avatar(self, size):
+		return 'http://www.gravatar.com/avatar/%s?d==&s=%d' % (md5(self.email.encode('utf-8')).hexdigest(), size)
+
 	def __repr__(self):
 		return '<User %r>' % (self.nickname)
 
