@@ -62,12 +62,12 @@ def after_login(resp):
     if resp.email is None or resp.email == "":
         flash('Invalid login. Please try again.')
         return redirect(url_for('login'))
-    user = User.query.filter_by(email=resp.email).first()
+    user = User.query.filter_by(email = resp.email).first()
     if user is None:
         nickname = resp.nickname
         if nickname is None or nickname == "":
             nickname = resp.email.split('@')[0]
-        user = User(nickname=nickname, email=resp.email)
+        user = User(nickname = nickname, email = resp.email)
         db.session.add(user)
         db.session.commit()
     remember_me = False
