@@ -39,4 +39,3 @@ if not app.debug:
     app.logger.info('microblog startup')
 
 from app import views, models
-
